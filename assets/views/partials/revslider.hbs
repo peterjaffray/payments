@@ -1,0 +1,95 @@
+<style>
+    #revSpan {
+        z-index: 10;
+        position: absolute;      
+    }
+
+</style>
+<figure id="revSpan" title="Media Box for Video and Slideshows"> 
+  <iframe 
+      src="/slider/{{slug}}/"
+      allowtransparency="false" 
+      frameborder="0" 
+      scrolling="no" 
+      name="revframe"
+      id="revframe"
+      width="0"
+      height="0"
+      allowfullscreen
+      mozallowfullscreen 
+      webkitallowfullscreen 
+      oallowfullscreen 
+      msallowfullscreen
+      title="Visual Presentation">
+  </iframe>
+</figure>
+
+<script>
+let ww = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
+let wh = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+
+console.log("ww", ww, "wh", wh);
+
+window.addEventListener('resize', (event) => {
+    ww = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
+    wh = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+  console.log('page is resized');
+});
+
+window.addEventListener('load', (event) => {
+  console.log('page is fully loaded');
+  setRevSize();
+});
+
+
+function setRevSize() {
+    const revframe = document.getElementById('revframe')
+    const feature = document.getElementById('feature')
+    const width = feature.offsetWidth || ww
+    const height = feature.offsetHeight || wh
+    console.log("width", width, "height", height);
+
+    revframe.width = width;
+    revframe.height = height;
+    
+    
+    
+}
+
+
+function rev(action) {
+    if (typeof revapi !== "undefined") {
+        switch (revapi) {
+            case undefined:
+                break;
+            case null:
+                break;
+            default:
+                switch (action) {
+                    case "start":
+                        revapi.revstart();
+                        break;
+                    case "pause":
+                        revapi.revpause();
+                        break;
+                    case "next":
+                        revapi.revnext();
+                        break;
+                    case "prev":
+                        revapi.revprev();
+                        break;
+                    case "redraw":
+                        revapi.revredraw();
+                        break;
+                    default:
+                        var slideNumber = action || "1";
+                        slideNumber = parseInt(slideNumber, 10);
+                        revapi.revshowslide(slideNumber);
+                        break;
+                }
+        }
+    }
+
+    return;
+}
+</script>

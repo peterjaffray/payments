@@ -1,0 +1,14 @@
+{
+  "events": {    
+  },
+  "ignore": [
+    "test/*",
+    "docs/*",
+    "assets/*"
+  ],
+  "watch": [
+    "src/**/*"
+  ],
+  "ext": "ts,js,json"
+  
+}
