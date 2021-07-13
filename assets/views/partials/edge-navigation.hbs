@@ -1,0 +1,174 @@
+
+<!-- Side Navigation -->
+<nav id="edge" style="right: calc(100% + 250px); top: 25%; opacity: 0;">
+   <div id="crest_reveal" style="
+   width: 18px;
+   height: auto;
+   padding-left: 1.3em;
+  
+   "
+   >
+    <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 153.9931 177.125">
+      <polygon id="_1" data-name="1" points="0.153 111.589 114.552 177.125 114.413 135.838 97.921 126.418 97.989 148.669 33.082 111.477 92.958 76.494 92.888 57.555 0.153 111.589" style="fill: #f09"/>
+      <polygon id="_2" data-name="2" points="113.965 0 0 66.305 36.423 87.172 51.588 77.249 32.929 66.193 97.598 28.568 97.836 98.841 114.314 107.019 113.965 0" style="fill: #f09"/>
+      <polygon id="_3" data-name="3" points="119.193 42.503 119.249 61.259 137.195 51.085 137.432 125.901 75.195 90.234 59.08 100.071 153.993 154.357 153.561 22.516 119.193 42.503" style="fill: #f09"/>
+    </svg>
+  </div>
+  <ul>
+    
+		<li class="enav-link">
+      <a href="/advertising/" title="Managed digital advertising service">
+        
+        <span>Digital Advertising</span>
+		  </a>
+		</li>
+    <li class="enav-link">
+      <a href="/ecommerce/" title="Ecommerce development and integration services">        
+        <span>Ecommerce</span>
+		  </a>
+		</li>
+		<li class="enav-link">
+      <a href="/design/" title="Graphic design and creative services">       
+        
+        <span>Graphic Design</span>
+      </a>
+      </li>
+		<li class="enav-link">
+			<a href="/websites/" title="Website design and development services">
+        
+			<span>Website Development</span></a>
+		</li>
+    <li class="enav-link">
+      <a href="/hosting/" title="Canadian web application hosting" >
+				
+			  <span>Web App Hosting</span>
+		  </a>
+    </li>		
+		{{!-- <li class="enav-link enews_sub">
+      
+				<svg class="svg-down-dims" style="width: 18px;">
+					<use xlink:href="#down"></use>
+				</svg>
+			  <span>Latest</span>	
+      
+    </li> --}}
+		{{!-- <li class="enav-link enews_sub_item hide">
+      <img src="{{asset 'built/css/svg/sprite.view.svg'}}#right" class="svg-right-dims" alt="">
+      <a href="/jobs/" title="Careers at Choice"><span>Jobs</span></a>
+    </li> --}}
+		{{!-- <li class="enav-link enews_sub_item hide">
+      <svg class="svg-right-dims" style="width: 18px;">
+							<use xlink:href="#right"></use>
+						</svg>
+      <a href="/blog/" title="Stay informed"><span>Blogs</span></a>
+    </li>
+		<li class="enav-link enews_sub_item hide">
+      <svg class="svg-right-dims" style="width: 18px;">
+							<use xlink:href="#right"></use>
+						</svg>
+      <a href="/news/" title="Read popular marketing articles & research"><span>News</span></a>
+    </li> --}}
+		
+		<li class="enav-link">
+      <a href="/contact/" title="Request a meeting or send a message">
+      <svg class="svg-meet-dims" style="width: 18px;">
+							<use xlink:href="#meet"></use>
+						</svg>
+      <span>Contact us</span></a>
+    </li>
+	</ul>
+</nav>
+{{#contentFor "scripts"}}
+<script>
+
+$(window).resize(function() {
+      edgeNavInit();
+  });
+
+  $(window).click(function() {     
+    var $target = $(event.target);
+    if(!$target.closest('nav#edge').length) {
+      edgeNavInit();
+    }        
+  })
+
+
+$(function () {
+  
+  edgeNavInit();  
+
+  
+
+  $("li.enews_sub").on('click', function () {
+    $('li.enews_sub_item').toggle()
+    
+  })
+
+  $('nav#edge').on('mouseenter', 
+      function() {
+          var windowHeight = $(window).height() - $("header").height();
+          var edge_li = (windowHeight/20);
+          var windowWidth = $(window).width();
+          $('nav#edge').width(windowWidth/6);
+          $("#crest_reveal").css("opacity", "1");
+          $("nav#edge").css({
+            "min-width": "250px",
+            "left": "0px",
+            "background-color":"#23263a",
+            "transition": "all 30ms ease-in"
+          });
+          $('nav#edge span').delay(100).show(0);
+        
+       
+          
+      }
+  )
+  $('nav#edge').on('mouseleave', 
+      function() {
+        var windowHeight = $(window).height() - $("header").height();
+        var edge_li = (windowHeight/20);
+        var submenuSpacer = 4 * edge_li;
+        
+        $('nav#edge').width(32);
+        $('nav#edge').css("min-width", "unset");
+        $('nav#edge span').hide(0);         
+
+          
+    
+      }
+  )
+    
+})
+
+function edgeNavInit(){
+  var windowHeight = $(window).height() - $("header").height();
+  var windowWidth = $(window).width();
+  if (windowWidth < 960 || supportsTouch) {
+  $("#edge").hide();
+  }
+  var edge_li = (windowHeight/20);
+  var edge_wi = (windowWidth/6);
+
+  $('nav#edge').height(windowHeight / 1.5)
+  $('nav#edge').width('75px')
+  $('nav#edge').css({ 
+  top: (windowHeight / 6)+"px",
+  opacity: 0.95,
+  left: "-50px",
+  "background-color": "#1a1c2e",
+  "-moz-transition": "width 500ms ease-in",
+  "-webkit-transition": "width 500ms ease-in",
+  transition: "width 500ms ease-in"
+  })
+  $('nav#edge li').css("line-height", (edge_li+'px'))
+
+  $('nav#edge span').hide()
+
+  if ($('li.expandedNav').length) {
+  $('.enews_sub').removeClass('expandedNav')
+  }
+
+} 
+
+</script>
+{{/contentFor}}
