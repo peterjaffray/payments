@@ -1,22 +1,36 @@
 {
-    "compilerOptions": {
-        "target": "es5",
-        "module": "commonjs",
-        "sourceMap": true,
-        "outDir": "./build",
-        "rootDir": "./src",
-        /* Strict Type-Checking Options */
-        "strict": true,
-        "noImplicitAny": true,
-        /* Module Resolution Options */
-        "moduleResolution": "node",
-        "baseUrl": "./src",
-        "esModuleInterop": true,
-        /* Advanced Options */
-        "skipLibCheck": true,
-        "forceConsistentCasingInFileNames": true
-    },
-    "lib": ["es2015"],
-    "include": ["src/**/*"],
-    "exclude": ["node_modules"]
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "lib": [ 
+      "dom",
+      "es6",
+      "es2017",
+      "esnext.asynciterable"
+    ],
+    "sourceMap": false,
+    "outDir": "dist",
+    "moduleResolution": "node",
+    "removeComments": true,
+    "noImplicitAny": false,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,    
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "src/**/*.tsx",
+    "src/**/*.ts"
+  ]
 }
